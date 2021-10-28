@@ -17,6 +17,9 @@ export default function Post() {
                     <a href="/mainpage">Main Page</a>
                     <a href="/createpost">Create Post</a>
                 </div>
+                <div className="logout">
+                    <a href="/">Logout</a>
+                </div>
             </div>
             <div className="individualPost">
                 <div className="Post inidividual">

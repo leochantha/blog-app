@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Axios from 'axios';
 import { useHistory } from "react-router";
+import { useParams } from "react-router";
 import "../App.css";
 
 export default function MainPage() {
     const [postList, setPostList] = useState([]);
     let history = useHistory();
+    let { loggedIn } = useParams();
 
     useEffect(() => {
         Axios.get('http://10.0.0.2:3000/api/get').then((data) => {
@@ -18,6 +20,9 @@ export default function MainPage() {
                 <div className="links">
                     <a href="/mainpage">Main Page</a>
                     <a href="/createpost">Create Post</a>
+                </div>
+                <div className="logout">
+                    <a href="/">Logout</a>
                 </div>
             </div>
             <div className="MainPage">

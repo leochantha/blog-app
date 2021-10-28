@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Axios from 'axios';
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 import "../App.css";
 
 export default function Login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    const loggedIn = useHistory();
+
     const confirmLogin = () => {
-        Axios.post('http://10.0.0.2:3000/api/test', { email: email, passowrd: password })
+        Axios.post('http://10.0.0.2:3000/api/test', { email: email, passowrd: password }).then(response=>response.data = loggedIn);
     };
     return (
         <div className="LogAndReg">

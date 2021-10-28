@@ -1,5 +1,4 @@
 import './App.css';
-import { useLocation } from 'react-router-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import CreatePost from './pages/CreatePost';
@@ -17,7 +16,7 @@ function App() {
         <Route path="/register" exact render={(props) => <Register />} />
         <Route path="/mainpage" exact render={(props) => <MainPage />} />
         <Route path="/createpost" exact render={(props) => <CreatePost />} />
-        <Route path="/adminPage" exact render={(props) => <AdminPage/>} />
+        <Route path="/adminPage" exact render={(props) => <AdminPage />} />
         <Route path="/post/:postId" exact render={(props) => <Post />} />
         <Route path='*' exact={true} component={NotFound} />
         <Route component={NotFound} />
