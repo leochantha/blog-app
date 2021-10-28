@@ -3,6 +3,8 @@ import Axios from 'axios';
 import { useParams } from "react-router";
 import "../App.css";
 
+const baseURL = "http://10.0.0.2:3000/";
+
 export default function CreatePost() {
 
     let { userInfo } = useParams();
@@ -10,7 +12,11 @@ export default function CreatePost() {
     const [post, setPost] = useState("")
 
     const submitPost = () => {
-        Axios.post(`http://10.0.0.2:3000/api/blog/${userInfo.data.username}`, { title: title, post: post })
+        try{
+            Axios.post(`${baseURL}api/blog/${userInfo.data.username}`, { title: title, post: post })
+        }catch(error){
+            console.log(error);
+        }
     };
 
     return (

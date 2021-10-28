@@ -3,6 +3,7 @@ import Axios from 'axios';
 import { Link } from "react-router-dom";
 import "../App.css";
 
+const baseURL = "http://10.0.0.2:3000/";
 
 export default function Register() {
     const [email, setEmail] = useState("")
@@ -12,7 +13,13 @@ export default function Register() {
 
     const confirmRegister = () => {
         if (password === passwordConfirm) {
-            Axios.get('http://10.0.0.2:3000/api/auth/signup', { name: username, email: email, passowrd: password })
+            try{
+                Axios.post(`${baseURL}api/auth/signup`, { name: username, email: email, passowrd: password })
+            }catch(error){
+                console.log(error);
+            }   
+        }else{
+            console.log("Passwords do not match")
         }
     };
     return (
@@ -24,9 +31,9 @@ export default function Register() {
                     <label>enter your email</label>
                     <input type="text" onChange={(e) => { setEmail(e.target.value); }} />
                     <label>enter your password</label>
-                    <input type="text" onChange={(e) => { setPassword(e.target.value); }} />
+                    <input type="password" onChange={(e) => { setPassword(e.target.value); }} />
                     <label>confirm your password</label>
-                    <input type="text" onChange={(e) => { setPasswordConfirm(e.target.value); }} />
+                    <input type="password" onChange={(e) => { setPasswordConfirm(e.target.value); }} />
                     <button onClick={confirmRegister}>Register</button>
                     <div className="goToRegister">
                     <div>
