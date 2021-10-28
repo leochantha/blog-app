@@ -8,10 +8,14 @@ export default function Login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    const loggedIn = useHistory();
+    let userInfo = useHistory()
+
+    function setUserInfo(array){
+        userInfo = array
+    }
 
     const confirmLogin = () => {
-        Axios.post('http://10.0.0.2:3000/api/test', { email: email, passowrd: password }).then(response=>response.data = loggedIn);
+        Axios.post('http://10.0.0.2:3000/api/signin', { email: email, passowrd: password }).then(response=> setUserInfo(response.data));
     };
     return (
         <div className="LogAndReg">

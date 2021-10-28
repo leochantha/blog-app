@@ -12,7 +12,7 @@ export default function Register() {
 
     const confirmRegister = () => {
         if (password === passwordConfirm) {
-            Axios.get('http://10.0.0.2:3000/api/test', { username: username, email: email, passowrd: password })
+            Axios.get('http://10.0.0.2:3000/api/auth/signup', { name: username, email: email, passowrd: password })
         }
     };
     return (
