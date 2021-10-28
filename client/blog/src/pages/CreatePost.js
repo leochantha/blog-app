@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Axios from 'axios';
+import { useParams } from "react-router";
 import "../App.css";
 
 export default function CreatePost() {
 
-    const [username, setUserName] = useState("")
+    let { userInfo } = useParams();
     const [title, setTitle] = useState("")
     const [post, setPost] = useState("")
 
-    //cors maybe!!
     const submitPost = () => {
-        Axios.post('http://10.0.0.2:3000/api/?', { username: username, title: title, post: post })
+        Axios.post(`http://10.0.0.2:3000/api/blog/${userInfo.data.username}`, { title: title, post: post })
     };
 
     return (
@@ -26,8 +26,6 @@ export default function CreatePost() {
             </div>
             <div className="CreatePost">
                 <div className="uploadPost">
-                    <label>Username</label>
-                    <input type="text" onChange={(e) => { setUserName(e.target.value); }} />
                     <label>Title</label>
                     <input type="text" onChange={(e) => { setTitle(e.target.value); }} />
                     <label>Post Text</label>
