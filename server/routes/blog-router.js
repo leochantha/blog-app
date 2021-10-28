@@ -4,9 +4,9 @@ const BlogCtrl = require('../controllers/blog-ctrl')
 
 const router = express.Router()
 
-router.post('/blog', BlogCtrl.createMovie)
-router.delete('/blog/:id', BlogCtrl.deleteMovie)
-router.get('/blog/:id', BlogCtrl.getMovieById)
-router.get('/blogs', BlogCtrl.getMovies)
+router.post('/blog', BlogCtrl.createBlog)
+router.delete('/blog/:id', BlogCtrl.deleteBlog)
+router.get('/blog/:id', BlogCtrl.getBlogById)
+router.get('/blogs', BlogCtrl.getBlogs)
 
 module.exports = router

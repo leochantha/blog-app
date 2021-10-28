@@ -9,6 +9,8 @@ createBlog = (req, res) => {
             error: 'You must provide a blog',
         })
     }
+    
+    body.author = req.query.author
 
     const blog = new Blog(body)
 
