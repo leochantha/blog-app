@@ -39,7 +39,7 @@ router.get("/users", async (req, res) => {
     const index = fs
       .readFileSync("static/index.html", "utf8")
       .replace(
-        "$username$",
+        "$login$",
         Templates.Functionalities +
           Templates.LogoutForm
       )

@@ -38,11 +38,11 @@ login = (user, password) => {
   );
 }
 
-addBlog = (user, title, content) => {
+addBlog = (user, title, content, callback) => {
   const statement = db.prepare(
     "INSERT INTO blog (title, content, author) VALUES (?, ?, ?)"
   );
-  statement.run([title, content, user]);
+  statement.run([title, content, user], (err) => callback(err));
   statement.finalize();
 }
 
@@ -113,7 +113,9 @@ init()
 module.exports = {
   db,
   login,
+  addBlog,
   getBlogs,
   getBlogById,
-  getUsers
+  getUsers,
+  deleteUser,
 }
