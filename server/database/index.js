@@ -116,5 +116,6 @@ module.exports = {
   getBlogs,
   getBlogById,
   getUsers,
-  deleteUser
+  deleteUser,
+  addBlog
 }
