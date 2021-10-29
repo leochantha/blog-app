@@ -1,5 +1,5 @@
 const express = require("express");
-const htmlTemplates = require("../static/htmlTemplates");
+const Templates = require("../static/Templates");
 const fs = require("fs");
 
 const router = express.Router();
@@ -7,14 +7,14 @@ const router = express.Router();
 router.get("/addBlog", (req, res) => {
   if (req.session.username) {
     const index = fs
-      .readFileSync("./src/static/index.html", "utf8")
+      .readFileSync("./src/static/index.", "utf8")
       .replace(
         "$login$",
-        htmlTemplates.htmlLoggedInFunctionalities +
+        Templates.Functionalities +
           `Hello ${req.session.username}!` +
-          htmlTemplates.htmlLogoutForm
+          Templates.LogoutForm
       )
-      .replace("$content$", htmlTemplates.htmlAddBlog);
+      .replace("$content$", Templates.AddBlog);
     res.send(index);
   } else {
     res.redirect("/");
@@ -23,9 +23,6 @@ router.get("/addBlog", (req, res) => {
 
 router.get("/blog/:blogId", async (req, res) => {
   const db = req.app.get("db");
-  const commentList = (
-    await db.getComments().catch((err) => console.log(err))
-  );
   let content = "";
   await db
     .getBlogById(req.params.blogId)
@@ -45,19 +42,19 @@ router.get("/blog/:blogId", async (req, res) => {
     });
   if (req.session.username) {
     const index = fs
-      .readFileSync("./src/static/index.html", "utf8")
+      .readFileSync("./src/static/index.", "utf8")
       .replace(
         "$login$",
-        htmlTemplates.htmlLoggedInFunctionalities +
+        Templates.Functionalities +
           `Hello ${req.session.username}!` +
-          htmlTemplates.htmlLogoutForm
+          Templates.LogoutForm
       )
       .replace("$content$", content);
     res.send(index);
   } else {
     const index = fs
-      .readFileSync("./src/static/index.html", "utf8")
-      .replace("$login$", htmlTemplates.htmlLoginForm)
+      .readFileSync("./src/static/index.", "utf8")
+      .replace("$login$", Templates.LoginForm)
       .replace("$content$", content);
     res.send(index);
   }

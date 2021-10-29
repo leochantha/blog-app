@@ -1,6 +1,6 @@
 const express = require("express");
 const fs = require("fs");
-const htmlTemplates = require("../static/htmlTemplates");
+const htmlTemplates = require("../static/Templates");
 
 const router = express.Router();
 

@@ -1,4 +1,4 @@
-export default {
+module.exports = {
     LoginForm:`
     <form action="/login" method="post" name="testLogin">
     <input name="username" id = "login" type="text" placeholder="username"/>

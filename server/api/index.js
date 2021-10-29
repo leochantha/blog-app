@@ -1,17 +1,15 @@
 const express = require("express");
 const login = require("./login");
 const blog = require("./blog");
-const comment = require("./comment");
 const user = require("./user");
 const fs = require("fs");
-const htmlTemplates = require("../static/htmlTemplates");
+const htmlTemplates = require("../static/Templates");
 
 
 const router = express.Router();
 
 router.use(login);
 router.use(blog);
-router.use(comment);
 router.use(user);
 
 router.get("/", async (req, res) => {
@@ -48,3 +46,5 @@ router.get("/", async (req, res) => {
     res.send(index);
   }
 });
+
+module.exports = router
