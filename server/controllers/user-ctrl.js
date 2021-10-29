@@ -1,4 +1,5 @@
 const User = require('../models/user-model')
+const con = require('../database')
 
 createUser = (req, res) => {
     const body = req.body
@@ -10,27 +11,24 @@ createUser = (req, res) => {
         })
     }
 
-    const user = new User(body)
-
-    if (!user) {
-        return res.status(400).json({ success: false, error: err })
-    }
-
-    user
-        .save()
-        .then(() => {
+    var sql = `INSERT INTO users (username, email, password) VALUES ('${body.username}', '${body.email}', '${body.password}')`;
+    try {
+        con.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log("User created!");
             return res.status(201).json({
                 success: true,
-                id: user._id,
+                username: body.username,
                 message: 'User created!',
             })
+        });
+    } catch (error) {
+        return res.status(400).json({
+            success: false,
+            username: body.username,
+            message: 'User already exists!',
         })
-        .catch(error => {
-            return res.status(400).json({
-                error,
-                message: 'User not created!',
-            })
-        })
+    }   
 }
 
 updateUser = async (req, res) => {
@@ -88,23 +86,23 @@ deleteUser = async (req, res) => {
 }
 
 login = async (req, res) => {
-    await User.findOne({email: req.body.email}, (err, user) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
-        }
-
-        if (!user) {
-            return res
-                .status(500)
-                .json({ success: false, error: `User not found` })
-        }
-        if (user.password == req.body.password){
-            return res.status(200).json({ success: true, data: user })
-        } else {
-            res.status(401).json({ success: false })
-        }
-        
-    }).catch(err => console.log(err))
+    var username = req.body.username;
+	var password = req.body.password;
+	if (username && password) {
+		connection.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function(error, results, fields) {
+			if (results.length > 0) {
+				req.session.loggedin = true;
+				req.session.username = username;
+				res.redirect('/home');
+			} else {
+				res.send('Incorrect Username and/or Password!');
+			}			
+			res.end();
+		});
+	} else {
+		res.send('Please enter Username and Password!');
+		res.end();
+	}
 }
 
 module.exports = {

@@ -1,7 +1,11 @@
-const Blog = require('../models/blog-model')
-
 createBlog = (req, res) => {
-    const body = req.body
+    const { title, content } = req.body
+    const author = ""
+    if (req.session.username) {
+        author = req.session.username
+    } else {
+        author = "Anonymous"
+    }
 
     if (!body) {
         return res.status(400).json({
