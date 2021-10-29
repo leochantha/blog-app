@@ -33,7 +33,6 @@ router.get("/", async (req, res) => {
       .replace(
         "$login$",
         Templates.Functionalities +
-          `Hello ${req.session.username}!` +
           Templates.LogoutForm
       )
       .replace("$content$", content);
