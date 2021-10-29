@@ -20,7 +20,7 @@ router.post("/login", async (req, res) => {
         console.error(err);
       });
   }
-  res.redirect("/", status);
+  res.redirect(status, "/");
 });
 
 router.post("/logout", (req, res) => {

@@ -92,6 +92,23 @@ getUsers = () => {
   );
 }
 
+deleteUser = (username) => {
+  return new Promise((resolve, reject) => {
+    const deleteStatement = db.prepare(
+      "DELETE FROM user WHERE username=(?)"
+    );
+    deleteStatement.run(username, (err, rows) => {
+      if (err) {
+        console.error(err);
+        reject(err);
+      } else {
+        resolve(rows);
+      }
+      deleteStatement.finalize();
+    });
+  });
+}
+
 init()
 module.exports = {
   db,
