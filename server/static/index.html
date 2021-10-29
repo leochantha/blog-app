@@ -11,6 +11,19 @@
         $login$
     </nav>
     <div class="content">$content$</div>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+    ></script>
+    <script>
+        function deleteUser(username) {
+            $.ajax({
+                url: `/users/${username}`,
+                method: "DELETE",
+            }).done(function () {
+                location.reload();
+            })
+        }
+    </script>
 </body>
 
 </html>
