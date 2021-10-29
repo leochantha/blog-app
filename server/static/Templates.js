@@ -11,8 +11,8 @@ module.exports = {
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
     `,
     Functionalities:`
-    <a class btn btn-outline-success my-2 my-sm-0 mx-2" href="/blog"> new blog</a>
-    a class btn btn-outline-success my-2 my-sm-0 mx-2" href="/users"> Users</a>
+    <a class btn btn-outline-success my-2 my-sm-0 mx-2" href="/addblog"> new blog</a>
+    <a class btn btn-outline-success my-2 my-sm-0 mx-2" href="/users"> Users</a>
     `,
     AddBlog:`
     <div class = "border shadow p-4">
