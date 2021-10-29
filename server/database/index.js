@@ -25,7 +25,7 @@ init = () => {
 login = (user, password) => {
   return new Promise((resolve, reject) =>
     db.get(
-      `SELECT login FROM user WHERE username LIKE '${user}' AND password = '${password}'`,
+      `SELECT username FROM user WHERE username LIKE '${user}' AND password = '${password}'`,
       (err, row) => {
         if (err) {
           console.error(err);

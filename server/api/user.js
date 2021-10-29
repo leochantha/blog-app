@@ -1,6 +1,6 @@
 const express = require("express");
 const fs = require("fs");
-const htmlTemplates = require("../static/Templates");
+const Templates = require("../static/Templates");
 
 const router = express.Router();
 
@@ -37,12 +37,12 @@ router.get("/users", async (req, res) => {
         </table>
     `;
     const index = fs
-      .readFileSync("./src/static/index.html", "utf8")
+      .readFileSync("static/index.html", "utf8")
       .replace(
         "$username$",
-        htmlTemplates.htmlLoggedInFunctionalities +
+        Templates.Functionalities +
           `Hello ${req.session.username}!` +
-          htmlTemplates.htmlLogoutForm
+          Templates.LogoutForm
       )
       .replace("$content$", content);
     res.send(index);

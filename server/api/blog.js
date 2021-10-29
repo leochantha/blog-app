@@ -7,7 +7,7 @@ const router = express.Router();
 router.get("/addBlog", (req, res) => {
   if (req.session.username) {
     const index = fs
-      .readFileSync("./src/static/index.", "utf8")
+      .readFileSync("static/index.", "utf8")
       .replace(
         "$login$",
         Templates.Functionalities +
@@ -42,7 +42,7 @@ router.get("/blog/:blogId", async (req, res) => {
     });
   if (req.session.username) {
     const index = fs
-      .readFileSync("./src/static/index.", "utf8")
+      .readFileSync("static/index.", "utf8")
       .replace(
         "$login$",
         Templates.Functionalities +
@@ -53,7 +53,7 @@ router.get("/blog/:blogId", async (req, res) => {
     res.send(index);
   } else {
     const index = fs
-      .readFileSync("./src/static/index.", "utf8")
+      .readFileSync("static/index.", "utf8")
       .replace("$login$", Templates.LoginForm)
       .replace("$content$", content);
     res.send(index);
