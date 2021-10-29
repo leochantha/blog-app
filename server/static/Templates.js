@@ -12,7 +12,7 @@ module.exports = {
     </form>
     `,
     Functionalities:`
-    <a class = "btn btn-outline-success my-2 my-sm-0 mx-2" href="/addblog"> new blog</a>
+    <a class = "btn btn-outline-success my-2 my-sm-0 mx-2" href="/addBlog"> new blog</a>
     <a class = "btn btn-outline-success my-2 my-sm-0 mx-2" href="/users"> Users</a>
     `,
     AddBlog:`
@@ -20,12 +20,12 @@ module.exports = {
         <h4>add blog</h4>
         <form method="POST" action="/blog">
             <div class="form-group">
-                <label for ="title">Title</label>
-                <input type="text" class="form-control" id="title" name="title" placeholder="Title Name"/>
+                <label for="newTitle">Title</label>
+                <input type="text" class="form-control" id="newTitle" name="title" placeholder="title name"/>
             </div>
             <div class="form-group">
-                <label for="content">Content</label>
-                <textarea type="text" class="form-control" id="content" name="content" placeholder="Blog Content" rows="8"></textarea>
+                <label for="newContent">Content</label>
+                <textarea type="text" class="form-control" id="newContent" name="content" placeholder="Blog Content" rows="8"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
