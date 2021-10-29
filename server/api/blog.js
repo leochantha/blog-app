@@ -11,7 +11,6 @@ router.get("/addBlog", (req, res) => {
       .replace(
         "$login$",
         Templates.Functionalities +
-          `Hello ${req.session.username}!` +
           Templates.LogoutForm
       )
       .replace("$content$", Templates.AddBlog);
@@ -46,7 +45,6 @@ router.get("/blog/:blogId", async (req, res) => {
       .replace(
         "$login$",
         Templates.Functionalities +
-          `Hello ${req.session.username}!` +
           Templates.LogoutForm
       )
       .replace("$content$", content);

@@ -19,12 +19,12 @@ module.exports = {
         <h4>add blog</h4>
         <form method"POST" action="/blog">
             <div class="form-group">
-                <label for ="newBlogTitle">Title</label>
-                <input type="text" class="form-control" id="newBlogTitle" name="title" placeholder="title name"/>
+                <label for ="title">Title</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="title name"/>
             </div>
             <div class="form-group">
-                <label for="newBlogContent">Content</label>
-                <textarea type="text" class="form-control" id="newBlogContent" name="content" placeholder="Blog Content" rows="8"></textarea>
+                <label for="content">Content</label>
+                <textarea type="text" class="form-control" id="content" name="content" placeholder="Blog Content" rows="8"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

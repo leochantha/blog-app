@@ -17,21 +17,21 @@ router.get("/users", async (req, res) => {
             <tr>
                 <td>${user.username}</td>
                 <td>${user.password}</td>
-                <td><button type="button" class="btn btn-danger" onclick="deleteUser('${user.username}')">Delete</button></td>
+                <td><button class="btn btn-dark" type="button" onclick="deleteUser('${user.username}')">Delete</button></td>
             </tr>
             `;
       });
     });
     const content = `
         <table class="table">
-            <thead>
+            <thead style="background-color:darkgrey";>
                 <tr>
                     <th scope="col">Username</th>
                     <th scope="col">Password</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="background-color:lightgrey";>
                 ${userContent}
             </tbody>
         </table>
@@ -41,7 +41,6 @@ router.get("/users", async (req, res) => {
       .replace(
         "$username$",
         Templates.Functionalities +
-          `Hello ${req.session.username}!` +
           Templates.LogoutForm
       )
       .replace("$content$", content);
